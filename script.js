@@ -1,66 +1,108 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const reel = document.querySelector(".reel");
-  if (reel && !reel.dataset.cloned) {
-    const original = [...reel.children];
-    original.forEach(card => reel.appendChild(card.cloneNode(true)));
-    reel.dataset.cloned = "true";
-  }
+document.addEventListener("DOMContentLoaded", function () {
 
-  const confetti = document.querySelector(".confetti");
-  if (confetti) {
-    for(let i=0;i<65;i++){
-      const piece=document.createElement("i");
-      piece.style.left=Math.random()*100+"%";
-      piece.style.top=(-10-Math.random()*30)+"%";
-      piece.style.animationDuration=(4+Math.random()*5)+"s";
-      piece.style.animationDelay=(Math.random()*5)+"s";
-      piece.style.transform=`rotate(${Math.random()*360}deg)`;
-      confetti.appendChild(piece);
-    }
-  }
+    const countdown = document.querySelector(".countdown");
+    const openButton = document.getElementById("openButton");
+    const heart = document.querySelector(".heart");
+    const envelope = document.querySelector(".envelope");
 
-  // Countdown on the opening page — the button unlocks only after 3 → 2 → 1.
-  const countdown = document.querySelector(".countdown");
-  const openBtn = document.querySelector(".surprise-btn");
-  if (countdown && openBtn) {
-    let n = 3;
-    openBtn.classList.add("is-disabled");
-    openBtn.setAttribute("aria-disabled", "true");
-    openBtn.setAttribute("tabindex", "-1");
-    const timer = setInterval(() => {
-      n--;
-      if (n > 0) {
-        countdown.textContent = n;
-      } else {
-        countdown.textContent = "OPEN 💗";
-        openBtn.classList.remove("is-disabled");
-        openBtn.removeAttribute("aria-disabled");
-        openBtn.removeAttribute("tabindex");
-        clearInterval(timer);
-      }
+    let number = 3;
+
+    /*
+     * Initially disable the button
+     */
+    openButton.classList.add("is-disabled");
+    openButton.setAttribute("aria-disabled", "true");
+    openButton.setAttribute("tabindex", "-1");
+
+    /*
+     * Countdown
+     */
+    const timer = setInterval(function () {
+
+        number--;
+
+        if (number > 0) {
+
+            countdown.textContent = number;
+
+            countdown.classList.remove("count-pop");
+
+            void countdown.offsetWidth;
+
+            countdown.classList.add("count-pop");
+
+        }
+
+        else {
+
+            clearInterval(timer);
+
+            /*
+             * Show final countdown
+             */
+            countdown.textContent = "1";
+
+            countdown.classList.remove("count-pop");
+
+            void countdown.offsetWidth;
+
+            countdown.classList.add("count-pop");
+
+            /*
+             * Wait 1 second after 1
+             */
+            setTimeout(function () {
+
+                countdown.textContent = "💗";
+
+                /*
+                 * Start red heart blooming
+                 */
+                envelope.classList.add("heart-open");
+
+                if (heart) {
+                    heart.classList.add("bloom");
+                }
+
+                /*
+                 * Enable button
+                 */
+                setTimeout(function () {
+
+                    openButton.classList.remove("is-disabled");
+
+                    openButton.removeAttribute("aria-disabled");
+
+                    openButton.removeAttribute("tabindex");
+
+                    openButton.innerHTML =
+                        "💌 Open My Message 💗";
+
+                    /*
+                     * Small glow effect
+                     */
+                    openButton.classList.add("ready");
+
+                }, 1200);
+
+            }, 1000);
+
+        }
+
     }, 1000);
-  }
 
-  // Type the final message paragraph-by-paragraph for a personal feel.
-  const message = document.querySelector("#messageBox");
-  if (message) {
-    const paragraphs = [...message.querySelectorAll("p")];
-    paragraphs.forEach((p, index) => {
-      const full = p.textContent;
-      p.textContent = "";
-      p.style.opacity = "1";
-      const delay = index * 2100;
-      setTimeout(() => {
-        let i = 0;
-        const speed = 22;
-        const type = () => {
-          if (i < full.length) {
-            p.textContent += full.charAt(i++);
-            setTimeout(type, speed);
-          }
-        };
-        type();
-      }, delay);
+
+    /*
+     * Prevent opening before countdown finishes
+     */
+    openButton.addEventListener("click", function (event) {
+
+        if (openButton.classList.contains("is-disabled")) {
+
+            event.preventDefault();
+
+        }
+
     });
-  }
+
 });
