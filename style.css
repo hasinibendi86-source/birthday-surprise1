@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap');
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; font-family:'DM Sans',sans-serif;
+  color:#fff; background:#160813; overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+.page{
+  min-height:100vh; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  padding:35px 20px;
+}
+.page::before,.page::after{
+  content:""; position:absolute; border-radius:50%; filter:blur(1px); opacity:.45; pointer-events:none;
+}
+.page::before{width:330px;height:330px;background:#ff4f9a;left:-170px;top:-120px}
+.page::after{width:300px;height:300px;background:#8b5cf6;right:-160px;bottom:-130px}
+.glow{position:absolute;width:520px;height:520px;background:#ff2f92;filter:blur(130px);opacity:.18;border-radius:50%}
+.card{
+  width:min(920px,94vw); position:relative; z-index:2;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(18px); border-radius:32px; padding:44px 28px;
+  box-shadow:0 30px 90px rgba(0,0,0,.35);
+  text-align:center;
+}
+.tiny{letter-spacing:4px;text-transform:uppercase;font-size:.72rem;color:#ffc5df}
+h1{font-family:'Pacifico',cursive;font-weight:400;line-height:1.15;margin:14px 0;font-size:clamp(2.5rem,8vw,5.7rem)}
+h1 span{color:#ff8fc5}
+.lead{font-size:1rem;line-height:1.8;color:#f7dce9;max-width:650px;margin:0 auto 25px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 23px;border-radius:999px;background:linear-gradient(135deg,#ff4f9a,#9b5cff);
+  box-shadow:0 10px 35px rgba(255,79,154,.3);font-weight:700;transition:.25s;
+}
+.btn:hover{transform:translateY(-3px) scale(1.02)}
+.envelope .icon{font-size:4.2rem;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px) rotate(2deg)}}
+
+.birthday{
+  background:radial-gradient(circle at 50% 20%,#5b183f 0,#240c21 45%,#110711 100%);
+}
+.hero-photo{
+  width:min(330px,70vw); aspect-ratio:3/4; object-fit:cover;
+  border-radius:170px 170px 30px 30px; border:7px solid rgba(255,255,255,.82);
+  box-shadow:0 25px 70px rgba(255,50,145,.35); display:block;margin:0 auto 25px;
+}
+.bday-title{font-size:clamp(3rem,10vw,7rem);text-shadow:0 8px 30px rgba(255,72,161,.3)}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;width:8px;height:18px;border-radius:4px;background:#ff75b7;animation:fall linear infinite;opacity:.75}
+.confetti i:nth-child(2n){background:#ffd166}.confetti i:nth-child(3n){background:#9b8cff}.confetti i:nth-child(4n){background:#7cf5d2}
+@keyframes fall{from{transform:translateY(-10vh) rotate(0)}to{transform:translateY(110vh) rotate(720deg)}}
+
+.memories{
+  min-height:100vh; background:linear-gradient(180deg,#4d0c34 0%,#ff4e9d 46%,#230a25 100%);
+  padding:90px 0 80px; display:block;
+}
+.curve-top,.curve-bottom{
+  position:absolute;left:-5%;width:110%;height:140px;background:#160813;
+  border-radius:0 0 50% 50%;z-index:1;
+}
+.curve-top{top:-75px}
+.curve-bottom{bottom:-75px;border-radius:50% 50% 0 0}
+.memory-head{position:relative;z-index:3;text-align:center;padding:40px 20px 35px}
+.memory-head h2,.final h2{font-family:'Pacifico';font-size:clamp(2.5rem,7vw,5rem);margin:0 0 8px}
+.memory-head p{color:#ffe7f2}
+.reel-window{position:relative;z-index:3;overflow:hidden;width:100%;padding:25px 0 45px}
+.reel{
+  display:flex;width:max-content;gap:22px;animation:slide 30s linear infinite;
+  padding-left:22px;
+}
+.reel:hover{animation-play-state:paused}
+.photo-card{
+  width:240px;height:350px;flex:0 0 auto;padding:8px;background:rgba(255,255,255,.92);
+  border-radius:24px;box-shadow:0 18px 45px rgba(55,0,30,.3);
+  transform:rotate(-2deg);
+}
+.photo-card:nth-child(2n){transform:rotate(2.5deg);margin-top:20px}
+.photo-card:nth-child(3n){transform:rotate(-1deg);margin-top:-8px}
+.photo-card img{width:100%;height:100%;object-fit:cover;border-radius:18px}
+@keyframes slide{to{transform:translateX(-50%)}}
+.reel-note{text-align:center;position:relative;z-index:3;font-family:'Caveat';font-size:1.7rem;color:#fff1f8}
+
+.final{
+  background:radial-gradient(circle at 50% 10%,#6b1948,#260c25 45%,#10070f);
+}
+.final-card{max-width:850px}
+.final h2{color:#ff9dca}
+.message{
+  margin:25px auto 30px; padding:30px 25px; border-radius:28px;
+  background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,80,160,.08));
+  border:1px solid rgba(255,255,255,.16); text-align:left;
+}
+.message p{font-size:clamp(1.05rem,2.4vw,1.3rem);line-height:1.9;margin:0 0 19px;color:#ffeaf4}
+.message .script{font-family:'Caveat';font-size:clamp(1.55rem,4vw,2.2rem);color:#ffabd0}
+.message .soft{font-family:Georgia,serif;font-style:italic}
+.message .strong{font-weight:700;color:#fff}
+.disclaimer{
+  margin-top:25px;font-family:'Caveat';font-size:1.45rem;color:#ffd3e6;
+  padding:14px 20px;border:1px dashed rgba(255,255,255,.3);border-radius:18px;
+}
+.footer-note{font-size:.78rem;color:#caa8ba;margin-top:25px}
+@media(max-width:600px){
+  .card{padding:32px 19px;border-radius:25px}
+  .photo-card{width:190px;height:285px}
+  .reel{gap:14px;animation-duration:24s}
+  .memory-head{padding-top:35px}
+}
+
+/* Birthday heart-bloom reveal */
+.birthday-reveal-page{
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255,56,106,.25), transparent 27%),
+    radial-gradient(circle at 50% 20%, #7d102d 0, #3a071b 38%, #16040d 100%);
+}
+.birthday-card{
+  max-width:900px;
+  padding:38px 28px 45px;
+  background:rgba(70,7,25,.48);
+  border-color:rgba(255,130,160,.24);
+}
+.reveal-kicker{animation:revealText 1.2s ease both .15s}
+.bloom-photo-wrap{
+  position:relative;
+  width:min(430px,82vw);
+  margin:4px auto 28px;
+  aspect-ratio:2/3;
+  display:grid;
+  place-items:center;
+}
+.bloom-photo{
+  width:100%;
+  height:100%;
+  aspect-ratio:auto;
+  object-fit:cover;
+  margin:0;
+  border-radius:34px;
+  border:6px solid rgba(255,255,255,.9);
+  box-shadow:0 24px 80px rgba(255,24,85,.38);
+  opacity:0;
+  clip-path:circle(0% at 50% 50%);
+  transform:scale(1.12);
+  animation:photoReveal 1.45s cubic-bezier(.22,.75,.2,1) forwards 1.05s;
+}
+.heart-bloom{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  pointer-events:none;
+  z-index:4;
+  animation:heartFade 1.15s ease forwards 1.0s;
+}
+.heart-shape{
+  position:relative;
+  width:min(190px,42vw);
+  height:min(190px,42vw);
+  background:linear-gradient(145deg,#ff174f,#c90038 65%,#870020);
+  transform:rotate(-45deg) scale(.35);
+  border-radius:24px 0 24px 0;
+  filter:drop-shadow(0 18px 30px rgba(255,0,65,.48));
+  animation:heartBloom 1.15s cubic-bezier(.16,.84,.28,1) forwards;
+}
+.heart-shape::before,.heart-shape::after{
+  content:""; position:absolute; width:100%; height:100%;
+  background:inherit; border-radius:50%;
+}
+.heart-shape::before{left:0;top:-50%;}
+.heart-shape::after{left:50%;top:0;}
+.heart-shine{
+  position:absolute; width:28px; height:75px; border-radius:50%;
+  background:rgba(255,255,255,.72); transform:rotate(-43deg) translate(-42px,-28px);
+  filter:blur(2px); opacity:0; animation:shineHeart .8s ease forwards .35s;
+}
+.heart-sparkles{position:absolute;inset:0;pointer-events:none;z-index:5;overflow:hidden}
+.heart-sparkles span{position:absolute;color:#ff5477;font-size:1.2rem;opacity:0;animation:floatHeart 2.5s ease-out infinite}
+.heart-sparkles span:nth-child(1){left:17%;top:38%;animation-delay:.3s}
+.heart-sparkles span:nth-child(2){left:78%;top:42%;animation-delay:.7s}
+.heart-sparkles span:nth-child(3){left:25%;top:65%;animation-delay:1s}
+.heart-sparkles span:nth-child(4){left:71%;top:68%;animation-delay:1.4s}
+.heart-sparkles span:nth-child(5){left:50%;top:12%;animation-delay:1.8s}
+.birthday-copy{animation:revealText 1s ease both 1.55s}
+@keyframes heartBloom{
+  0%{transform:rotate(-45deg) scale(.2);opacity:0}
+  20%{opacity:1}
+  58%{transform:rotate(-45deg) scale(1.08)}
+  100%{transform:rotate(-45deg) scale(1.35);opacity:1}
+}
+@keyframes heartFade{
+  0%{opacity:1;transform:scale(1)}
+  70%{opacity:1}
+  100%{opacity:0;transform:scale(1.25)}
+}
+@keyframes photoReveal{
+  0%{opacity:0;clip-path:circle(0% at 50% 50%);transform:scale(1.12)}
+  100%{opacity:1;clip-path:circle(78% at 50% 50%);transform:scale(1)}
+}
+@keyframes shineHeart{to{opacity:.85;transform:rotate(-43deg) translate(-20px,-18px)}}
+@keyframes floatHeart{0%{opacity:0;transform:translateY(15px) scale(.7) rotate(0)}25%{opacity:.9}100%{opacity:0;transform:translateY(-85px) scale(1.2) rotate(20deg)}}
+@keyframes revealText{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){
+  .birthday-card{padding:30px 18px 38px}
+  .bloom-photo-wrap{width:min(350px,86vw)}
+  .heart-shape{width:135px;height:135px}
+}
+
+/* Extra surprise effects */
+.intro-page{background:radial-gradient(circle at 50% 45%,#55102f 0,#1b0715 48%,#090308 100%)}
+.countdown{font-family:'Pacifico';font-size:2rem;color:#ffb4d4;height:42px;opacity:.95;animation:countPop .8s ease both}
+.heartbeat{animation:heartBeat 1.25s ease-in-out infinite}
+@keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.14)}30%{transform:scale(1)}45%{transform:scale(1.12)}60%{transform:scale(1)}}
+@keyframes countPop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+.surprise-btn{position:relative;overflow:hidden}
+.surprise-btn::after{content:"";position:absolute;top:-30%;left:-80%;width:45%;height:160%;background:rgba(255,255,255,.28);transform:skewX(-20deg);animation:buttonShine 2.8s infinite}
+@keyframes buttonShine{0%,55%{left:-80%}75%,100%{left:135%}}
+.cake{font-size:3.2rem;margin-top:4px;position:relative;display:inline-block;animation:cakeFloat 2.4s ease-in-out infinite}
+.flame{font-size:1.2rem;position:absolute;top:-17px;left:31px;animation:flicker .65s infinite alternate}
+.wish-hint{font-family:'Caveat';font-size:1.55rem;color:#ffd0e3;margin:0 0 8px}
+@keyframes cakeFloat{50%{transform:translateY(-5px)}}
+@keyframes flicker{from{transform:scale(.9) rotate(-3deg);opacity:.8}to{transform:scale(1.12) rotate(3deg);opacity:1}}
+.photo-card{position:relative;overflow:hidden}
+.photo-card figcaption{position:absolute;left:12px;right:12px;bottom:12px;padding:8px 10px;border-radius:13px;background:rgba(35,4,24,.72);backdrop-filter:blur(8px);font-family:'Caveat';font-size:1.25rem;color:#fff;text-align:center}
+.last-thing{position:relative;z-index:4;text-align:center;margin:34px auto 10px;padding:22px 20px;width:min(520px,88vw);border:1px solid rgba(255,255,255,.2);border-radius:25px;background:rgba(40,4,27,.28);box-shadow:0 15px 45px rgba(45,0,30,.18)}
+.last-thing p{font-family:'Caveat';font-size:1.8rem;margin:0 0 13px;color:#fff1f8}
+.message{position:relative;overflow:hidden}
+.message::before{content:"";position:absolute;inset:-50%;background:radial-gradient(circle,rgba(255,105,174,.11),transparent 55%);animation:messageGlow 5s ease-in-out infinite;pointer-events:none}
+.message p{position:relative}
+@keyframes messageGlow{50%{transform:scale(1.12);opacity:.55}}
+.emotional-end{font-family:'Caveat';font-size:1.8rem;color:#ffd4e6;margin:16px 0;opacity:0;animation:revealText 1s ease forwards 8s}
+.final-hearts{position:absolute;top:7%;left:50%;transform:translateX(-50%);color:#ff73ad;letter-spacing:16px;font-size:1.2rem;opacity:.65;animation:floatHearts 3s ease-in-out infinite;z-index:1}
+@keyframes floatHearts{50%{transform:translateX(-50%) translateY(-10px);opacity:1}}
+@media(max-width:600px){.last-thing p{font-size:1.55rem}.cake{font-size:2.8rem}}
+
+
+/* Surprise countdown unlock */
+.surprise-intro{font-family:'Caveat';font-size:1.65rem;color:#ffd9e8;margin-bottom:2px;animation:revealText .8s ease both}
+.open-label{font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;color:#f6a7c8;margin-bottom:2px}
+.surprise-btn.is-disabled{opacity:.42;filter:grayscale(.35);cursor:not-allowed;pointer-events:none;transform:none!important;box-shadow:none}
+.surprise-btn.is-disabled::after{animation:none}
+
+/* Final video surprise */
+.video-surprise{position:relative;z-index:3;width:min(760px,92vw);margin:34px auto 18px;padding:24px 20px;border-radius:28px;background:rgba(40,4,27,.34);border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 55px rgba(20,0,20,.25);text-align:center}
+.video-surprise h3{margin:4px 0 15px;font-family:'Caveat';font-size:2rem;color:#fff0f7}
+.video-frame{overflow:hidden;border-radius:22px;background:#12050d;box-shadow:0 12px 35px rgba(0,0,0,.35)}
+.video-frame video{display:block;width:100%;max-height:70vh;object-fit:contain;background:#080308}
+.video-note{font-family:'Caveat';font-size:1.3rem;color:#ffd5e7;margin:12px 0 0}
+@media(max-width:600px){.surprise-intro{font-size:1.45rem}.open-label{font-size:.72rem}.video-surprise{padding:20px 13px}.video-surprise h3{font-size:1.75rem}.video-frame{border-radius:17px}}
